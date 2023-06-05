@@ -1,0 +1,6 @@
+import styled from 'styled-components'
+
+export const SApp = styled.div`
+  display: flex;
+  flex-direction: column;
+`
