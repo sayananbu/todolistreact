@@ -18,14 +18,14 @@ export const SApp = styled.div`
     background-color: #282c34;
     flex-basis: 100vw;
     height: 100vh;
+	overflow: hidden;
 `;
 export const SContainer = styled.div`
     display: flex;
 	position: relative;
 	box-sizing: border-box;
     flex-direction: column;
-	background-color: rgba(255,255,255,.2);
 	min-width: 800px;
 	margin:20px auto;
-  	min-height: 93%;
+  	height: 93%;
 `;

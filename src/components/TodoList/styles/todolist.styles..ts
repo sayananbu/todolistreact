@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const STodoList = styled.div`
 	display: block;
-	background-color: red;
 	width: 100%;
 	height:100%;
 	overflow-y: scroll;
+	overflow-x: hidden;
 	box-sizing: border-box;
 	padding: 15px 30px;
 	::-webkit-scrollbar{

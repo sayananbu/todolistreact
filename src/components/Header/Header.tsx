@@ -1,18 +1,22 @@
-import React from 'react';
-import { SHeader, SSelect, SInputAdd, SButton, SInputSearch, STitle } from './styles/header.styles';
+import { TodoType } from '../../app';
+import AddTodoFrom from '../AddTodoForm/AddTodoFrom';
+import SearchAndFilter from '../SearchAndFilterForm/SearchAndFilter';
+import TasksCounter from '../TasksCounter/TasksCounter';
+import { SHeader } from './styles/header.styles';
 
-const Header = () => {
+type HeaderPropsType = {
+	addTodo:Function,
+	filterList:Function,
+	todoList:TodoType[],
+	searchList:Function
+}
+const Header:React.FC<HeaderPropsType> = ({addTodo,filterList,todoList,searchList}) => {
+	
     return (
         <SHeader>
-            <SSelect>
-                <option value='all'>Все задачи</option>
-                <option value='completed'>Выполнены</option>
-                <option value='active'>Активные</option>
-            </SSelect>
-            <SInputAdd type='text' placeholder='Новая задача...' />
-            <SButton>Добавить</SButton>
-            <SInputSearch type='text' placeholder='Поиск по названию...' />
-			<STitle>Осталось задач: 2</STitle>
+            <SearchAndFilter filterList={filterList} searchList={searchList}/>
+			<AddTodoFrom addTodo={addTodo}/>
+			<TasksCounter count={todoList.length}/>
         </SHeader>
     );
 };
