@@ -25,7 +25,7 @@ export const SContainer = styled.div`
 	position: relative;
 	box-sizing: border-box;
     flex-direction: column;
-	min-width: 800px;
+	width: 800px;
 	margin:20px auto;
   	height: 93%;
 `;
