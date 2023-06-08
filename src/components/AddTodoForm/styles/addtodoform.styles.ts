@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../../styles/app.styles';
 import { SInput } from '../../Header/styles/header.styles';
 
 export const SAddTodoForm = styled.form`
@@ -17,4 +18,12 @@ export const SButton = styled.button`
     margin: 5px;
     border: none;
     cursor: pointer;
+	@media ${device.mobileL} {
+		margin: 5px 0;
+		padding: 0;
+    }
+    @media ${device.mobileM} {
+		margin: 5px 0;
+		padding: 0;
+    }
 `;

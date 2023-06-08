@@ -8,6 +8,9 @@ import { SInput } from "../../Header/styles/header.styles";
 	justify-content: space-evenly;
 	grid-row:2;
 	width: 100%;
+	@media ${device.mobileL}{
+		grid-template-columns: 35% 65%;
+	}
 	@media ${device.mobileM}{
 		grid-template-columns: 20% 60% 20%;
 		grid-template-rows: 50% 50%;

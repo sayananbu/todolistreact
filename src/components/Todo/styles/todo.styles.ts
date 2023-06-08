@@ -28,7 +28,6 @@ export const STodoContainer = styled.div`
 export const SCheckbox = styled.input`
     transform: scale(3);
     grid-column: 1;
-    width: 95%;
 	@media ${device.mobileL}{
 		grid-row:span 2;
 		transform: scale(3);
