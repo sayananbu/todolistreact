@@ -1,4 +1,4 @@
-import React, { MutableRefObject, memo, useCallback, useRef, useState } from 'react';
+import React, { MutableRefObject, memo, useRef, useState } from 'react';
 import {
     SCheckbox,
     SEditInput,
@@ -14,6 +14,7 @@ type TodoType = {
     deleteTodo: Function;
     editTodo: Function;
 };
+
 const Todo: React.FC<TodoType> = memo(({ id, title, completed, deleteTodo, editTodo }) => {
     const [isEdit, setIsEdit] = useState<boolean>(false);
     const inputRef = useRef() as MutableRefObject<HTMLInputElement>;

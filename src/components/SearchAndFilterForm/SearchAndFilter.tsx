@@ -1,4 +1,4 @@
-import { FC, memo, useCallback } from 'react';
+import { FC, memo } from 'react';
 import { Filter } from '../../app';
 import { SInputSearch, SSearchAndFilterForm, SSelect } from './styles/searchandfilter';
 

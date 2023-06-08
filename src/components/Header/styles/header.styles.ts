@@ -1,12 +1,17 @@
 import styled from 'styled-components';
+import { device } from '../../../styles/app.styles';
 
 export const SHeader = styled.div`
     display: grid;
-    grid-template-rows: 33% 33% 33%;
+    grid-template-rows: 30% 33% 33%;
     grid-template-columns: 100%;
     grid-gap: 5px;
     height: 200px;
-    width: 100%;
+    width: 95%;
+	margin: 0 auto;
+	@media ${device.mobileM}{
+		grid-template-rows: 30% 40% 20%;
+	}
 `;
 export const SInput = styled.input`
     border-radius: 15px;
