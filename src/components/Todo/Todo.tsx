@@ -1,4 +1,4 @@
-import React, { MutableRefObject, memo, useRef, useState } from 'react';
+import React, { MutableRefObject, memo, useCallback, useRef, useState } from 'react';
 import {
     SCheckbox,
     SEditInput,
@@ -16,14 +16,14 @@ type TodoType = {
 };
 
 const Todo: React.FC<TodoType> = ({ id, title, completed, deleteTodo, editTodo }) => {
-	console.log("todo:",id)
+	//console.log("todo:",id)
     const [isEdit, setIsEdit] = useState<boolean>(false);
     const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
-	//TODO: сделать колбэками
+	
     function handleEditTodo() {
         if (isEdit) {
             setIsEdit(false);
-            if (inputRef.current.value.trim().length > 0) {
+            if (inputRef.current.value.trim().length > 0 && inputRef.current.value.trim()!==title) {
                 editTodo({ id: id, title: inputRef.current.value.trim(), completed: completed });
             }
         } else {
