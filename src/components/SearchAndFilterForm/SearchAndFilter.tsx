@@ -1,18 +1,17 @@
 import { FC, memo } from 'react';
-import { Filter } from '../../app';
 import { SInputSearch, SSearchAndFilterForm, SSelect } from './styles/searchandfilter';
+import { Filter } from '../TodoListScreen/TodoListScreen';
 
 type SearchAndFilterPropsType = {
-    filterList: Function;
-    searchList: Function;
+    setFilter: Function;
+    setSearchQuery: Function;
 };
-const SearchAndFilter: FC<SearchAndFilterPropsType> = memo(({ filterList, searchList }) => {
-	
+const SearchAndFilter: FC<SearchAndFilterPropsType> = ({ setFilter, setSearchQuery }) => {
     return (
         <SSearchAndFilterForm>
             <SSelect
                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-					filterList(e.target.value);
+					setFilter(e.target.value);
 				}}
             >
                 <option value={Filter.All}>Все задачи</option>
@@ -22,10 +21,10 @@ const SearchAndFilter: FC<SearchAndFilterPropsType> = memo(({ filterList, search
             <SInputSearch
                 type='text'
                 placeholder='Поиск по названию...'
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => searchList(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
             />
         </SSearchAndFilterForm>
     );
-});
+};
 
-export default SearchAndFilter;
+export default memo(SearchAndFilter);

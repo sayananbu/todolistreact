@@ -1,24 +1,23 @@
 import { memo } from 'react';
-import { TodoType } from '../../app';
 import AddTodoFrom from '../AddTodoForm/AddTodoFrom';
 import SearchAndFilter from '../SearchAndFilterForm/SearchAndFilter';
 import TasksCounter from '../TasksCounter/TasksCounter';
 import { SHeader } from './styles/header.styles';
 
 type HeaderPropsType = {
-    addTodo: Function;
-    filterList: Function;
-    todoList: TodoType[];
-    searchList: Function;
+    addNewTodo: Function;
+    setFilter: Function;
+    todosCount: number;
+    setSearchQuery: Function;
 };
-const Header: React.FC<HeaderPropsType> = memo(({ addTodo, filterList, todoList, searchList }) => {
+const Header: React.FC<HeaderPropsType> = ({ addNewTodo, setFilter, todosCount, setSearchQuery }) => {
     return (
         <SHeader>
-            <SearchAndFilter filterList={filterList} searchList={searchList} />
-            <AddTodoFrom addTodo={addTodo} />
-            <TasksCounter count={todoList.length} />
+            <SearchAndFilter setFilter={setFilter} setSearchQuery={setSearchQuery} />
+            <AddTodoFrom addNewTodo={addNewTodo} />
+            <TasksCounter count={todosCount} />
         </SHeader>
     );
-});
+};
 
-export default Header;
+export default memo(Header);

@@ -30,18 +30,3 @@ export const SApp = styled.div`
     height: 100vh;
 	overflow: hidden;
 `;
-export const SContainer = styled.div`
-    display: flex;
-	position: relative;
-	box-sizing: border-box;
-    flex-direction: column;
-	width: 800px;
-	margin:20px auto;
-  	height: 93%;
-	@media ${device.mobileL}{
-		width: 100%;
-	}
-	@media ${device.mobileM}{
-		width: 100%;
-	}
-`;

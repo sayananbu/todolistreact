@@ -15,10 +15,11 @@ type TodoType = {
     editTodo: Function;
 };
 
-const Todo: React.FC<TodoType> = memo(({ id, title, completed, deleteTodo, editTodo }) => {
+const Todo: React.FC<TodoType> = ({ id, title, completed, deleteTodo, editTodo }) => {
+	console.log("todo:",id)
     const [isEdit, setIsEdit] = useState<boolean>(false);
     const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
-
+	//TODO: сделать колбэками
     function handleEditTodo() {
         if (isEdit) {
             setIsEdit(false);
@@ -57,6 +58,6 @@ const Todo: React.FC<TodoType> = memo(({ id, title, completed, deleteTodo, editT
             <STodoDeleteButton onClick={handleDeleteButton}>{isEdit ? 'Отменить' : 'Удалить'}</STodoDeleteButton>
         </STodoContainer>
     );
-});
+};
 
-export default Todo;
+export default memo(Todo);

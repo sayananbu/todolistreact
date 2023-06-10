@@ -1,16 +1,16 @@
-import { FC, MutableRefObject, useCallback, useRef } from 'react';
+import { FC, MutableRefObject, memo, useCallback, useRef } from 'react';
 import { SAddTodoForm, SButton, SInputAdd } from './styles/addtodoform.styles';
 import { v4 as uuidv4 } from 'uuid';
 type AddTodoFromPropsType = {
-    addTodo: Function;
+    addNewTodo: Function;
 };
-const AddTodoFrom: FC<AddTodoFromPropsType> = ({ addTodo }) => {
+const AddTodoFrom: FC<AddTodoFromPropsType> = ({ addNewTodo }) => {
     const todoTitleInput = useRef() as MutableRefObject<HTMLInputElement>;
 
     const submitForm: React.FormEventHandler<HTMLFormElement> = useCallback(e => {
         e.preventDefault();
         if (todoTitleInput.current.value.trim().length > 0) {
-            addTodo({ id: uuidv4(), title: todoTitleInput.current.value.trim(), completed: false });
+            addNewTodo({ id: uuidv4(), title: todoTitleInput.current.value.trim(), completed: false });
         }
         todoTitleInput.current.value = '';
     },[])
@@ -22,4 +22,4 @@ const AddTodoFrom: FC<AddTodoFromPropsType> = ({ addTodo }) => {
     );
 };
 
-export default AddTodoFrom;
+export default memo(AddTodoFrom);
