@@ -13,7 +13,8 @@ export const STodoContainer = styled.div`
     height: 50px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    margin: 15px auto 0 auto;
+    //margin: 15px 5px 0 5px;
+	margin: 0;
     box-sizing: border-box;
 	@media ${device.mobileL}{
 		height: 80px;
