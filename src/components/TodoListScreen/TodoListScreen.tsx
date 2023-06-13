@@ -3,6 +3,7 @@ import { STodoListContainer } from './styles/todolistscreen.styles';
 import Header from '../Header/Header';
 import TodoList from '../TodoList/TodoList';
 import { initTodos } from '../../data/data.model';
+import useCreateTodos from '../../Hooks/useCreateTodos';
 
 export type TodoType = {
     id: string;
@@ -15,15 +16,15 @@ export enum Filter {
     All,
 }
 const TodoListScreen: FC = () => {
-    const [todos, setTodos] = useState<TodoType[]>(initTodos);
+    const [todos, setTodos] = useState<TodoType[]>(useCreateTodos(2000));
     const [filter, setFilter] = useState<Filter>(Filter.All);
     const [searchQuery, setSearchQuery] = useState<string>('');
-	
+
     const addNewTodo = useCallback(
         (newTodo: TodoType) => {
             setTodos(list => [newTodo, ...list]);
         },
-        [todos]
+        []
     );
 
     const deleteTodo = useCallback((id: string) => {
@@ -49,11 +50,11 @@ const TodoListScreen: FC = () => {
     );
 
     const getSearchedList = useCallback((list: TodoType[], query: string): TodoType[] => {
-		console.log('slist')
-        return list.filter(val => val.title.startsWith(query));
+        return list.filter(val => val.title.toLowerCase().startsWith(query.toLowerCase()));
     }, []);
-    //let list = getSearchedList(getFilteredList(filter), searchQuery);
-	const list = useMemo(()=>getSearchedList(getFilteredList(filter), searchQuery),[todos,filter,searchQuery])
+    const list = useMemo(() => {
+        return getSearchedList(getFilteredList(filter), searchQuery);
+    }, [todos, filter, searchQuery]);
 
     return (
         <STodoListContainer>
