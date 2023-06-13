@@ -13,12 +13,3 @@ export const SHeader = styled.div`
         grid-template-rows: 30% 40% 20%;
     }
 `;
-export const SInput = styled.input`
-    border-radius: 15px;
-    border: none;
-    margin: 5px;
-    padding: 0 15px;
-    font-size: 20px;
-    text-align: center;
-    
-`;

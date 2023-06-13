@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { device } from '../../../styles/app.styles';
-import { SInput } from '../../Header/styles/header.styles';
+import { SInput } from '../../../UI/input.ui';
+import { STodoButton } from '../../../UI/todobutton.ui';
 
 export const STodoContainer = styled.div`
     display: grid;
@@ -59,21 +60,7 @@ export const STodoLabel = styled.label`
 		grid-column:2/span 4
 	}
 `;
-export const STodoButton = styled.button`
-    width: 90%;
-    border-radius: 5px;
-    height: 80%;
-    border: none;
-    color: #fff;
-    font-size: 18px;
-    cursor: pointer;
-	@media ${device.mobileL}{
-		font-size: 12px;
-	}
-	@media ${device.mobileM}{
-		font-size: 12px;
-	}
-`;
+
 export const STodoEditButton = styled(STodoButton)`
     grid-column: 3;
     background-color: #3b9926;

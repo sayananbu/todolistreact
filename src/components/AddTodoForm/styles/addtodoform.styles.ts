@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { device } from '../../../styles/app.styles';
-import { SInput } from '../../Header/styles/header.styles';
+import { SInput } from '../../../UI/input.ui';
 
 export const SAddTodoForm = styled.form`
     display: grid;
