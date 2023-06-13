@@ -1,4 +1,4 @@
-import { FC, memo, MutableRefObject, useCallback, useRef, useState } from 'react';
+import { FC, memo, useCallback, useMemo, useState } from 'react';
 import { STodoListContainer } from './styles/todolistscreen.styles';
 import Header from '../Header/Header';
 import TodoList from '../TodoList/TodoList';
@@ -18,8 +18,7 @@ const TodoListScreen: FC = () => {
     const [todos, setTodos] = useState<TodoType[]>(initTodos);
     const [filter, setFilter] = useState<Filter>(Filter.All);
     const [searchQuery, setSearchQuery] = useState<string>('');
-	//const searchQuery = useRef() as MutableRefObject<HTMLInputElement>
-	console.log('screen')
+	
     const addNewTodo = useCallback(
         (newTodo: TodoType) => {
             setTodos(list => [newTodo, ...list]);
@@ -50,9 +49,11 @@ const TodoListScreen: FC = () => {
     );
 
     const getSearchedList = useCallback((list: TodoType[], query: string): TodoType[] => {
+		console.log('slist')
         return list.filter(val => val.title.startsWith(query));
     }, []);
-    let list = getSearchedList(getFilteredList(filter), searchQuery);
+    //let list = getSearchedList(getFilteredList(filter), searchQuery);
+	const list = useMemo(()=>getSearchedList(getFilteredList(filter), searchQuery),[todos,filter,searchQuery])
 
     return (
         <STodoListContainer>
