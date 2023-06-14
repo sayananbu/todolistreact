@@ -31,7 +31,6 @@ const TodoList: FC<TodoListPropsType> = ({ deleteTodo, todoList, editTodo }) => 
             </CellMeasurer>
         );
     };
-	console.log(cache.current.rowHeight)
     return (
         <STodoList>
             <AutoSizer>
