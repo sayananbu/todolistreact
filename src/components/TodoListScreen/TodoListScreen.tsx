@@ -1,9 +1,9 @@
-import { FC, memo, useCallback, useMemo, useState } from 'react';
+import { FC, memo, useCallback, useContext, useMemo, useState } from 'react';
 import { STodoListContainer } from './styles/todolistscreen.styles';
 import Header from '../Header/Header';
 import TodoList from '../TodoList/TodoList';
-import { initTodos } from '../../data/data.model';
-import useCreateTodos from '../../Hooks/useCreateTodos';
+import useCreateTodos from '../../hooks/useCreateTodos';
+import { ThemeContext } from '../../theme/theme';
 
 export type TodoType = {
     id: string;
@@ -19,13 +19,12 @@ const TodoListScreen: FC = () => {
     const [todos, setTodos] = useState<TodoType[]>(useCreateTodos(2000));
     const [filter, setFilter] = useState<Filter>(Filter.All);
     const [searchQuery, setSearchQuery] = useState<string>('');
+    const [isThemeOn, setIsThemeOn] = useState<boolean>(false);
+    const theme = isThemeOn ? 'light' : 'dark';
 
-    const addNewTodo = useCallback(
-        (newTodo: TodoType) => {
-            setTodos(list => [newTodo, ...list]);
-        },
-        []
-    );
+    const addNewTodo = useCallback((newTodo: TodoType) => {
+        setTodos(list => [newTodo, ...list]);
+    }, []);
 
     const deleteTodo = useCallback((id: string) => {
         setTodos(list => list.filter(val => val.id !== id));
@@ -57,15 +56,19 @@ const TodoListScreen: FC = () => {
     }, [todos, filter, searchQuery]);
 
     return (
-        <STodoListContainer>
-            <Header
-                addNewTodo={addNewTodo}
-                todosCount={list.length}
-                setFilter={setFilter}
-                setSearchQuery={setSearchQuery}
-            />
-            <TodoList deleteTodo={deleteTodo} todoList={list} editTodo={editTodo} />
-        </STodoListContainer>
+        <ThemeContext.Provider value={theme}>
+            <STodoListContainer>
+                <Header
+                    addNewTodo={addNewTodo}
+                    todosCount={list.length}
+                    setFilter={setFilter}
+                    setSearchQuery={setSearchQuery}
+                    isThemeOn={isThemeOn}
+                    setIsThemeOn={setIsThemeOn}
+                />
+                <TodoList deleteTodo={deleteTodo} todoList={list} editTodo={editTodo} />
+            </STodoListContainer>
+        </ThemeContext.Provider>
     );
 };
 

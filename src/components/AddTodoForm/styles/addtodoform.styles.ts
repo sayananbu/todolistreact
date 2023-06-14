@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { device } from '../../../styles/app.styles';
-import { SInput } from '../../../UI/input.ui';
+import { SInput } from '../../../Common/input.ui';
 
 export const SAddTodoForm = styled.form`
     display: grid;
     grid-template-columns: 70% 30%;
     justify-content: space-evenly;
     grid-row: 1;
+	grid-column:1/span 3;
 `;
 export const SInputAdd = styled(SInput)`
     grid-column: 1;

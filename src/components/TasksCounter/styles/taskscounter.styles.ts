@@ -6,7 +6,7 @@ export const SCounter = styled.h1`
 	font-weight: 700;
 	color: #fff;
 	grid-row: 3;
-	grid-column: span 2;
+	grid-column: 1;
 	margin:0 0 0 5px;
 	@media ${device.mobileM}{
 	font-size: 22px;

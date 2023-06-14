@@ -3,6 +3,7 @@ import Todo from '../Todo/Todo';
 import { STodoList } from './styles/todolist.styles.';
 import { TodoType } from '../TodoListScreen/TodoListScreen';
 import { AutoSizer, CellMeasurer, CellMeasurerCache, List } from 'react-virtualized';
+import styles from './styles/listscrollbar.module.css';
 
 type TodoListPropsType = {
     deleteTodo: Function;
@@ -39,16 +40,13 @@ const TodoList: FC<TodoListPropsType> = ({ deleteTodo, todoList, editTodo }) => 
                         width={width}
                         height={height}
                         deferredMeasurementCache={cache.current}
-                        rowHeight={(index)=>cache.current.rowHeight(index)+10}
+                        rowHeight={index => cache.current.rowHeight(index) + 10}
                         rowRenderer={renderRow}
                         rowCount={todoList.length}
+                        className={styles.Scrollbar}
                     />
                 )}
             </AutoSizer>
-
-            {/* {todoList.map(val => {
-                    return <Todo key={val.id} {...val} deleteTodo={deleteTodo} editTodo={editTodo} />;
-                })} */}
         </STodoList>
     );
 };

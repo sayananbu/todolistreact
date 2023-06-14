@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { device } from '../../../styles/app.styles';
-import { SInput } from '../../../UI/input.ui';
+import { SInput } from '../../../Common/input.ui';
 
 export const SSearchAndFilterForm = styled.div`
     display: grid;
     grid-template-columns: 30% 70%;
     justify-content: space-evenly;
     grid-row: 2;
+	grid-column:1/span 3;
     width: 100%;
     @media ${device.mobileL} {
         grid-template-columns: 35% 65%;

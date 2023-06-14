@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { device } from '../../../styles/app.styles';
-import { SInput } from '../../../UI/input.ui';
-import { STodoButton } from '../../../UI/todobutton.ui';
+import { SInput } from '../../../Common/input.ui';
+import { STodoButton } from '../../../Common/todobutton.ui';
 
 export const STodoContainer = styled.div`
     display: grid;
@@ -9,12 +9,10 @@ export const STodoContainer = styled.div`
     grid-template-rows: 100%;
     align-items: center;
     justify-items: center;
-    width: 100%;
+    width: calc(100% - 5px);
     height: 50px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    //margin: 15px 0 0 0;
-	//margin: 10px 0 0 0;
     box-sizing: border-box;
 	@media ${device.mobileL}{
 		height: 80px;
