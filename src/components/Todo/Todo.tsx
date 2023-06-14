@@ -13,10 +13,9 @@ type TodoType = {
     completed: boolean;
     deleteTodo: Function;
     editTodo: Function;
-	style:any;
 };
 
-const Todo: React.FC<TodoType> = ({ id, title, completed, deleteTodo, editTodo, style}) => {
+const Todo: React.FC<TodoType> = ({ id, title, completed, deleteTodo, editTodo}) => {
     const [isEdit, setIsEdit] = useState<boolean>(false);
     const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
 
@@ -38,9 +37,9 @@ const Todo: React.FC<TodoType> = ({ id, title, completed, deleteTodo, editTodo, 
             setIsEdit(false);
         } else deleteTodo(id);
     }
-
+	
     return (
-        <STodoContainer style={style}>
+        <STodoContainer >
             {isEdit ? (
                 <SEditInput ref={inputRef} type='text' placeholder='Название..' />
             ) : (
