@@ -12,7 +12,7 @@ const useCreateTodos = (count: number) => {
                 sentenceLowerBound: 2,
                 sentenceUpperBound: 5,
             }),
-            completed: false
+            completed: i%8===0
         });
     }
 
