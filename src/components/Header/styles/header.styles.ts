@@ -9,7 +9,11 @@ export const SHeader = styled.div`
     height: 200px;
     width: 98%;
     margin: 0 auto;
+	@media ${device.mobileL} {
+		grid-template-columns: 50% 20% 30%;
+    }
     @media ${device.mobileM} {
         grid-template-rows: 30% 40% 20%;
+		grid-template-columns: 50% 20% 30%;
     }
 `;

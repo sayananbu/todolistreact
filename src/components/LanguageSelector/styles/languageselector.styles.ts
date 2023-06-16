@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../../styles/app.styles";
 
 export const SLangSelect = styled.select`
 	grid-row:3;
@@ -9,4 +10,9 @@ export const SLangSelect = styled.select`
 	height: 80%;
 	align-self: center;
 	width: 98%;
+
+	@media ${device.mobileL} {
+    }
+    @media ${device.mobileM} {
+    }
 `

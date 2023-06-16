@@ -8,7 +8,12 @@ export const SCounter = styled.h1`
 	grid-row: 3;
 	grid-column: 1;
 	margin:0 0 0 5px;
+	@media ${device.mobileL}{
+	font-size: 20px;
+	text-align: center;
+	}
 	@media ${device.mobileM}{
-	font-size: 22px;
+	font-size: 20px;
+	text-align: center;
 	}
 `
