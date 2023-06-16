@@ -3,7 +3,7 @@ import { STodoListContainer } from './styles/todolistscreen.styles';
 import Header from '../Header/Header';
 import TodoList from '../TodoList/TodoList';
 import useCreateTodos from '../../hooks/useCreateTodos';
-import { ThemeContext } from '../../theme/theme';
+import { ThemeContext } from '../../contexts/contexts';
 
 export type TodoType = {
     id: string;

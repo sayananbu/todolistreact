@@ -1,6 +1,7 @@
 import { memo, useContext } from 'react';
 import { ThemeContext } from 'styled-components';
 import AddTodoFrom from '../AddTodoForm/AddTodoFrom';
+import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import SearchAndFilter from '../SearchAndFilterForm/SearchAndFilter';
 import TasksCounter from '../TasksCounter/TasksCounter';
 import ThemeToggler from '../ThemeToggler/ThemeToggler';
@@ -24,6 +25,7 @@ const Header: React.FC<HeaderPropsType> = ({ addNewTodo, setFilter, todosCount, 
                 checked={themeContext.theme === 'dark' ? false : true}
                 onChange={() => themeContext.setTheme((val: string) => (val === 'dark' ? 'light' : 'dark'))}
             />
+			<LanguageSelector />
         </SHeader>
     );
 };

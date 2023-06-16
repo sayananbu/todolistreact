@@ -2,6 +2,7 @@ import { FC, memo, useContext } from 'react';
 import { SInputSearch, SSearchAndFilterForm, SSelect } from './styles/searchandfilter';
 import { Filter } from '../TodoListScreen/TodoListScreen';
 import { ThemeContext } from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 type SearchAndFilterPropsType = {
     setFilter: Function;
@@ -9,6 +10,7 @@ type SearchAndFilterPropsType = {
 };
 const SearchAndFilter: FC<SearchAndFilterPropsType> = ({ setFilter, setSearchQuery }) => {
     const { theme } = useContext(ThemeContext);
+	const {t} = useTranslation()
     return (
         <SSearchAndFilterForm>
             <SSelect
@@ -16,14 +18,14 @@ const SearchAndFilter: FC<SearchAndFilterPropsType> = ({ setFilter, setSearchQue
                     setFilter(e.target.value);
                 }}
             >
-                <option value={Filter.All}>Все задачи</option>
-                <option value={Filter.Done}>Выполнены</option>
-                <option value={Filter.Active}>Активные</option>
+                <option value={Filter.All}>{t('header.filters.all')}</option>
+                <option value={Filter.Done}>{t('header.filters.done')}</option>
+                <option value={Filter.Active}>{t('header.filters.active')}</option>
             </SSelect>
             <SInputSearch
                 theme={theme}
                 type='text'
-                placeholder='Поиск по названию...'
+                placeholder={`${t('header.searchInput')}`}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
             />
         </SSearchAndFilterForm>

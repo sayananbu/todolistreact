@@ -2,6 +2,7 @@ import { FC, MutableRefObject, memo, useCallback, useRef, useContext } from 'rea
 import { SAddTodoForm, SButton, SInputAdd } from './styles/addtodoform.styles';
 import { v4 as uuidv4 } from 'uuid';
 import { ThemeContext } from 'styled-components';
+import { useTranslation } from 'react-i18next';
 type AddTodoFromPropsType = {
     addNewTodo: Function;
 };
@@ -15,10 +16,11 @@ const AddTodoFrom: FC<AddTodoFromPropsType> = ({ addNewTodo }) => {
         }
         todoTitleInput.current.value = '';
     },[])
+	const {t} = useTranslation()
     return (
         <SAddTodoForm onSubmit={submitForm}>
-            <SInputAdd theme={theme} ref={todoTitleInput} type='text' placeholder='Новая задача...' />
-            <SButton theme={theme} type='submit'>Добавить</SButton>
+            <SInputAdd theme={theme} ref={todoTitleInput} type='text' placeholder={`${t('header.addInput')}`} />
+            <SButton theme={theme} type='submit'>{t('header.addButton')}</SButton>
         </SAddTodoForm>
     );
 };

@@ -1,4 +1,5 @@
 import React, { MutableRefObject, memo, useRef, useState, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ThemeContext } from 'styled-components';
 import {
     SCheckbox,
@@ -20,6 +21,7 @@ const Todo: React.FC<TodoType> = ({ id, title, completed, deleteTodo, editTodo})
     const [isEdit, setIsEdit] = useState<boolean>(false);
     const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
 	const {theme} = useContext(ThemeContext)
+	const {t} = useTranslation()
     function handleEditTodo() {
         if (isEdit) {
             setIsEdit(false);
@@ -41,7 +43,7 @@ const Todo: React.FC<TodoType> = ({ id, title, completed, deleteTodo, editTodo})
     return (
         <STodoContainer theme={theme}>
             {isEdit ? (
-                <SEditInput theme={theme} ref={inputRef} type='text' placeholder='Название..' />
+                <SEditInput theme={theme} ref={inputRef} type='text' placeholder={`${t('todo.changeNameInput')}`} />
             ) : (
                 <>
                     <SCheckbox
@@ -53,8 +55,8 @@ const Todo: React.FC<TodoType> = ({ id, title, completed, deleteTodo, editTodo})
                     <STodoLabel theme={theme} htmlFor={id}>{title}</STodoLabel>
                 </>
             )}
-            <STodoEditButton onClick={handleEditTodo}>{isEdit ? 'Сохранить' : 'Изменить'}</STodoEditButton>
-            <STodoDeleteButton onClick={handleDeleteButton}>{isEdit ? 'Отменить' : 'Удалить'}</STodoDeleteButton>
+            <STodoEditButton onClick={handleEditTodo}>{isEdit ? t('todo.buttons.save') : t('todo.buttons.change')}</STodoEditButton>
+            <STodoDeleteButton onClick={handleDeleteButton}>{isEdit ? t('todo.buttons.cancel') : t('todo.buttons.delete')}</STodoDeleteButton>
         </STodoContainer>
     );
 };
