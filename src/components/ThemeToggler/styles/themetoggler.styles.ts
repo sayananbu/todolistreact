@@ -15,7 +15,7 @@ export const ToggleTheme = styled.div`
         background-color: #28292c;
         border-radius: 50px;
         cursor: pointer;
-		border: 2px solid #d8dbe0;
+		border: ${({theme})=>theme === 'dark' ? '3px solid #d8dbe0' : '3px solid #000'};
     }
     input {
         position: absolute;
@@ -29,7 +29,7 @@ export const ToggleTheme = styled.div`
         transition: 0.3s;
     }
     input:checked ~ span {
-        background-color: #d8dbe0;
+        background-color: #fff;
     }
     span::before {
         content: '';

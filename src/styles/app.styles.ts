@@ -25,7 +25,7 @@ export const SApp = styled.div`
 	box-sizing: border-box;
     flex-direction: column;
 	position: relative;
-    background-color: #282c34;
+    background-color: ${({theme})=>theme === 'dark' ? '#282c34': '#fff'};
     flex-basis: 100vw;
     height: 100vh;
 	overflow: hidden;

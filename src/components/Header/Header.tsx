@@ -1,4 +1,5 @@
-import { memo } from 'react';
+import { memo, useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import AddTodoFrom from '../AddTodoForm/AddTodoFrom';
 import SearchAndFilter from '../SearchAndFilterForm/SearchAndFilter';
 import TasksCounter from '../TasksCounter/TasksCounter';
@@ -10,16 +11,19 @@ type HeaderPropsType = {
     setFilter: Function;
     todosCount: number;
     setSearchQuery: Function;
-    setIsThemeOn: Function;
-    isThemeOn: boolean;
 };
-const Header: React.FC<HeaderPropsType> = ({ addNewTodo, setFilter, todosCount, setSearchQuery, setIsThemeOn, isThemeOn }) => {
+const Header: React.FC<HeaderPropsType> = ({ addNewTodo, setFilter, todosCount, setSearchQuery }) => {
+    const themeContext = useContext(ThemeContext);
     return (
         <SHeader>
             <SearchAndFilter setFilter={setFilter} setSearchQuery={setSearchQuery} />
             <AddTodoFrom addNewTodo={addNewTodo} />
-            <TasksCounter count={todosCount} />
-			<ThemeToggler checked={isThemeOn} onChange={()=>setIsThemeOn((val:boolean)=>!val)}/>
+            <TasksCounter count={todosCount} theme={themeContext.theme} />
+            <ThemeToggler
+				theme={themeContext.theme}
+                checked={themeContext.theme === 'dark' ? false : true}
+                onChange={() => themeContext.setTheme((val: string) => (val === 'dark' ? 'light' : 'dark'))}
+            />
         </SHeader>
     );
 };

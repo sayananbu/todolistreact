@@ -19,8 +19,6 @@ const TodoListScreen: FC = () => {
     const [todos, setTodos] = useState<TodoType[]>(useCreateTodos(2000));
     const [filter, setFilter] = useState<Filter>(Filter.All);
     const [searchQuery, setSearchQuery] = useState<string>('');
-    const [isThemeOn, setIsThemeOn] = useState<boolean>(false);
-    const theme = isThemeOn ? 'light' : 'dark';
 
     const addNewTodo = useCallback((newTodo: TodoType) => {
         setTodos(list => [newTodo, ...list]);
@@ -56,19 +54,15 @@ const TodoListScreen: FC = () => {
     }, [todos, filter, searchQuery]);
 
     return (
-        <ThemeContext.Provider value={theme}>
             <STodoListContainer>
                 <Header
                     addNewTodo={addNewTodo}
                     todosCount={list.length}
                     setFilter={setFilter}
                     setSearchQuery={setSearchQuery}
-                    isThemeOn={isThemeOn}
-                    setIsThemeOn={setIsThemeOn}
                 />
                 <TodoList deleteTodo={deleteTodo} todoList={list} editTodo={editTodo} />
             </STodoListContainer>
-        </ThemeContext.Provider>
     );
 };
 

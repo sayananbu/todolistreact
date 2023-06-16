@@ -1,12 +1,13 @@
-import { FC, MutableRefObject, memo, useCallback, useRef } from 'react';
+import { FC, MutableRefObject, memo, useCallback, useRef, useContext } from 'react';
 import { SAddTodoForm, SButton, SInputAdd } from './styles/addtodoform.styles';
 import { v4 as uuidv4 } from 'uuid';
+import { ThemeContext } from 'styled-components';
 type AddTodoFromPropsType = {
     addNewTodo: Function;
 };
 const AddTodoFrom: FC<AddTodoFromPropsType> = ({ addNewTodo }) => {
     const todoTitleInput = useRef() as MutableRefObject<HTMLInputElement>;
-
+	const {theme} = useContext(ThemeContext)
     const submitForm: React.FormEventHandler<HTMLFormElement> = useCallback(e => {
         e.preventDefault();
         if (todoTitleInput.current.value.trim().length > 0) {
@@ -16,8 +17,8 @@ const AddTodoFrom: FC<AddTodoFromPropsType> = ({ addNewTodo }) => {
     },[])
     return (
         <SAddTodoForm onSubmit={submitForm}>
-            <SInputAdd ref={todoTitleInput} type='text' placeholder='Новая задача...' />
-            <SButton type='submit'>Добавить</SButton>
+            <SInputAdd theme={theme} ref={todoTitleInput} type='text' placeholder='Новая задача...' />
+            <SButton theme={theme} type='submit'>Добавить</SButton>
         </SAddTodoForm>
     );
 };

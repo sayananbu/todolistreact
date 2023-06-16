@@ -11,6 +11,7 @@ export const SAddTodoForm = styled.form`
 `;
 export const SInputAdd = styled(SInput)`
     grid-column: 1;
+	border:${({theme})=>theme === 'light' ? '1px solid #000' : 'none'};
 `;
 export const SButton = styled.button`
     border-radius: 15px;
@@ -19,6 +20,7 @@ export const SButton = styled.button`
     margin: 5px;
     border: none;
     cursor: pointer;
+	border:${({theme})=>theme === 'light' ? '1px solid #000' : 'none'};
 	@media ${device.mobileL} {
 		margin: 5px 0;
 		padding: 0;

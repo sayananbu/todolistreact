@@ -1,13 +1,16 @@
 import { SApp } from './styles/app.styles';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import TodoListScreen from './components/TodoListScreen/TodoListScreen';
-
+import { ThemeContext } from 'styled-components';
 
 const App: FC = () => {
+	const [theme, setTheme] = useState<string>('dark')
     return (
-        <SApp>
-            <TodoListScreen/>
-        </SApp>
+        <ThemeContext.Provider value={{theme, setTheme}}>
+            <SApp theme={theme}>
+                <TodoListScreen />
+            </SApp>
+        </ThemeContext.Provider>
     );
 };
 

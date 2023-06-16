@@ -11,7 +11,7 @@ export const STodoContainer = styled.div`
     justify-items: center;
     width: calc(100% - 5px);
     height: 50px;
-    border: 1px solid #ccc;
+    border: ${({theme})=>theme === 'dark' ? '1px solid #ccc' : '1px solid #000'};
     border-radius: 8px;
     box-sizing: border-box;
 	@media ${device.mobileL}{
@@ -42,7 +42,7 @@ export const STodoLabel = styled.label`
     padding: 0;
     grid-column: 2;
     font-size: 23px;
-    color: #fff;
+    color:${({theme})=>theme === 'dark' ? '#fff' : '#000'};
     width: 95%;
     text-align: center;
     text-overflow: ellipsis;
@@ -86,12 +86,12 @@ export const STodoDeleteButton = styled(STodoButton)`
 `;
 
 export const SEditInput = styled(SInput)`
-    //width: 400px;
     width: 95%;
     margin: 0;
     padding: 0;
     height: 70%;
     grid-column: span 2;
+	border:${({theme})=>theme === 'dark' ? 'none' : '1px solid #000'};
 	@media ${device.mobileL}{
 		grid-row: 1;
 		grid-column: 2/span 4;

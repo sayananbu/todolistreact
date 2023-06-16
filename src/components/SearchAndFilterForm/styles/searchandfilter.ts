@@ -37,6 +37,7 @@ export const SSelect = styled.select`
 export const SInputSearch = styled(SInput)`
     grid-column: 2;
     margin: 5px;
+	border:${({theme})=>theme === 'light' ? '1px solid #000' : 'none'};
     @media ${device.mobileM} {
         font-size: 13px;
         grid-row: 2;

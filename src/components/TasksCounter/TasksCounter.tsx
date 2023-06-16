@@ -2,12 +2,16 @@ import React from 'react'
 import { SCounter } from './styles/taskscounter.styles'
 
 type TaskCounterType = {
-	count:number
+	count:number;
+	theme:string;
 }
-const TasksCounter:React.FC<TaskCounterType> = ({count}) => {
-  return (
-	count<1 ? <SCounter>Здесь пока нет задач :(</SCounter> :
-	<SCounter>Осталось задач: {count}</SCounter>
+const TasksCounter:React.FC<TaskCounterType> = ({count,theme}) => {
+  return (<SCounter theme={theme}>{
+	
+	count<1 ? 'Здесь пока нет задач :(' :
+	`Осталось задач: ${count}`
+		}
+	</SCounter>
   )
 }
 

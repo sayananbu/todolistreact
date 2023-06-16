@@ -1,4 +1,5 @@
-import React, { MutableRefObject, memo, useRef, useState } from 'react';
+import React, { MutableRefObject, memo, useRef, useState, useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import {
     SCheckbox,
     SEditInput,
@@ -18,7 +19,7 @@ type TodoType = {
 const Todo: React.FC<TodoType> = ({ id, title, completed, deleteTodo, editTodo}) => {
     const [isEdit, setIsEdit] = useState<boolean>(false);
     const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
-
+	const {theme} = useContext(ThemeContext)
     function handleEditTodo() {
         if (isEdit) {
             setIsEdit(false);
@@ -37,11 +38,10 @@ const Todo: React.FC<TodoType> = ({ id, title, completed, deleteTodo, editTodo})
             setIsEdit(false);
         } else deleteTodo(id);
     }
-	
     return (
-        <STodoContainer >
+        <STodoContainer theme={theme}>
             {isEdit ? (
-                <SEditInput ref={inputRef} type='text' placeholder='Название..' />
+                <SEditInput theme={theme} ref={inputRef} type='text' placeholder='Название..' />
             ) : (
                 <>
                     <SCheckbox
@@ -50,7 +50,7 @@ const Todo: React.FC<TodoType> = ({ id, title, completed, deleteTodo, editTodo})
                         checked={completed}
                         onChange={() => editTodo({ id, title: title, completed: !completed })}
                     />
-                    <STodoLabel htmlFor={id}>{title}</STodoLabel>
+                    <STodoLabel theme={theme} htmlFor={id}>{title}</STodoLabel>
                 </>
             )}
             <STodoEditButton onClick={handleEditTodo}>{isEdit ? 'Сохранить' : 'Изменить'}</STodoEditButton>
