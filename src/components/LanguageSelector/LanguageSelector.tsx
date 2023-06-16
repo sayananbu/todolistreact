@@ -11,7 +11,6 @@ const LanguageSelector = () => {
 		en: { nativeName: 'English' }
 	  };
 	  const { i18n } = useTranslation();
-	  console.log(i18n)
   return (
 	<SLangSelect onChange={(e:React.ChangeEvent<HTMLSelectElement>)=>i18n.changeLanguage(e.target.value)} value={i18n.language}>
 		{Object.keys(lngs).map(val=><option key={val} value={val}>{lngs[val].nativeName}</option>)}
